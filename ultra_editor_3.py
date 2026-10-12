@@ -235,6 +235,7 @@ root_container = HSplit([editor, HSplit([status_bar, output_window])])
 
 home_files = os.listdir(".")
 
+
 keywords = [
     "#include",
     "<iostream>",
@@ -277,7 +278,6 @@ keywords = [
     "format",
     "format_map",
     "from",
-    "func",
     "func",
     "function",
     "global",
@@ -352,7 +352,87 @@ keywords = [
     "tkinter",
     "numpy",
     "scipy",
+    "abs",
+    "any",
+    "ascii",
+    "bin",
+    "bool",
+    "breakpoint",
+    "bytearray",
+    "bytes",
+    "callable",
+    "chr",
+    "classmethod",
+    "compile",
+    "complex",
+    "delattr",
+    "dir",
+    "divmod",
+    "eval",
+    "exec",
+    "exit",
+    "filter",
+    "frozenset",
+    "getattr",
+    "globals",
+    "hasattr",
+    "hash",
+    "hex",
+    "isinstance",
+    "issubclass",
+    "locals",
+    "map",
+    "max",
+    "memoryview",
+    "min",
+    "next",
+    "not",
+    "object",
+    "oct",
+    "ord",
+    "pow",
+    "property",
+    "quit",
+    "repr",
+    "reversed",
+    "round",
+    "set",
+    "setattr",
+    "slice",
+    "sorted",
+    "staticmethod",
+    "str",
+    "sum",
+    "vars",
+    "zip",
 ]
+
+golang_keywords = [
+    "break",
+    "case",
+    "chan",
+    "const",
+    "continue",
+    "defer",
+    "else",
+    "fallthrough",
+    "false",
+    "func",
+    "goto",
+    "import",
+    "interface",
+    "package",
+    "range",
+    "return",
+    "select",
+    "struct",
+    "switch",
+    "true",
+    "type",
+    "var",
+]
+
+all_words = keywords + golang_keywords + variables + home_files
 
 
 variables = []
@@ -380,7 +460,7 @@ def auto_complete(event):
     if not word:
         return
 
-    matches = [item for item in keywords + os.listdir(".") + variables if item.startswith(word)]
+    matches = [item for item in all_words if item.startswith(word)]
 
     if matches:
         completion = matches[0][len(word) :]
